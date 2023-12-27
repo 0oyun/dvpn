@@ -7,6 +7,7 @@ var (
 	ProtocolID       = "/miniDVPN/1.0.0"
 	ListenHost       = "0.0.0.0"
 	ListenPort       = "4001"
+	VirtualHost      = "10.1.1.1"
 	localHost        host.Host
 	localAddr        string
 )

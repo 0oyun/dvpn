@@ -1,6 +1,5 @@
 miniDVPN
 
-*.yaml
 
 *.lock
 *.log

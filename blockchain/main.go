@@ -17,14 +17,17 @@ func init() {
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
+	listenHost := viper.GetString("network.listen_host")
 	listenPort := viper.GetString("network.listen_port")
 	rendezvousString := viper.GetString("network.rendezvous_string")
 	protocolID := viper.GetString("network.protocol_id")
-
+	virtualHost := viper.GetString("interface.address")
+	network.ListenHost = listenHost
 	network.RendezvousString = rendezvousString
 	network.ProtocolID = protocolID
 	network.ListenPort = listenPort
 	database.ListenPort = listenPort
+	network.VirtualHost = virtualHost
 	block.ListenPort = listenPort
 }
 
