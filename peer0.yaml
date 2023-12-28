@@ -1,11 +1,32 @@
 interface:
     name: peer0
-    id: 12D3KooWNM1BJpPAuMMtwDYM1WTQzQjXzayD3ZpqqQysc4gtYb6B
+    id: QmPwXkbsmDxexa1dtaWfMVDyXzmbTGGfKxPiVt7tLQf6Gx
     listen_port: 8082
-    address: 10.1.1.1/24
+    address: 10.1.1.3/24
     private_key: !!binary |
-        CAESQMk9+kaR8x3xdgzvf1x6PlVoBaeHjWp4CbRicNQmx/LluiWDsENSKn7MyXgLaKiuYi
-        qrhrQNCY1W0zq6UYe9MJw=
+        CAASqAkwggSkAgEAAoIBAQCqCQE8rhUPtfp3ApPnVOlUYo7auDqqpF+uacNWJGz4pIrs8T
+        CSQhRG5qZlKJvxWgfoUcHBBGc0c3vEzrlMSO8nkFFx9DP2WZaJxImLId+mLK+wHc8NkbkT
+        F6+0OEBzUj4tCsylnO6/SGc5k5/WMAgf894eyub9EcSPb1l7XUbZKSZCW5tFgBdfWYeZ4+
+        ZYdTTepkkfPO0QtzJTHNjds4bGFz1anV/fGdU9kPd46zqBWDFW9wdijGPJLXps2XB7fRNw
+        OuWl/1RvZvGkXWwmXtUX52rMYZM9tHHkit6/wuApaB1+RL8bziTGBpttPdA9UPkIuI3Dmf
+        KIaqK51hVf0oTFAgMBAAECggEARVR6nqVUjR1kTNZOPErRAMlW+jOYKC/xm4ogTaV4kUF2
+        K/qEFX7ACdDOE/0k6JoPE1kSqYMEGczksHCh+UrbyMP9kXtDHLWWvgHXG1XqfTVHRYZCAI
+        RkdDZ6O/+bt+nW1ELNAtIkPvZksINS7uCSz4R+Ewwkdxehj+KVF8oGs1B70cjYvqZI3a9S
+        3KzaoUAmA/B/BLjWv7nvqYXGXBi6m6JHoUCP0WprUdU0++BLoOqBrHzGNWHpeA1VDLgyKI
+        tZzI7L/H4d/mjHaCBxmZZ3iSvRM+XdxK+DL/wK6T0YC1cRpBsm69blaCzC7WCD+sZCU6Xt
+        7frWUtbMywksIHvdWQKBgQDNaDGDXLiuxrcRwpNbDNbaAMRur7qUqcd+LKJsz6b+rMZtck
+        QjYD84ElTe0DSBhDf8zW4a10Tl3ScncZwz6G7BxCR2RWX232e6dofGIB9OpfvXsEXNbQZg
+        D0APgN7RRRjplTlE8lpQxLwHAzpFSpTQ5Q9PCJLsytoAnvJylH1a8wKBgQDT6naiLKdglm
+        kDPmFatDnd034TouremFMrnp5Ki3sKidDssNbq0MzPv9/3T1GoNkKmUgX56pmuYOnmIa6P
+        oILZLKDETWZHlKU9pYLIeWaLOCiFEW0NvMeEA41rz5bFypXu2HawJV+Bn/mPRyDdNbxvA5
+        C0bsz2x4lk6KbAsAKfZwKBgQCoNDGPk8c8gEd7yK1oewwZu1UgGtEcWied4CkmF6l1lcBr
+        8Y1wtqkuXnyXdUH56W77mrIWUr/9x+r/Nt6l9ylzjQ4at9u2nN1RaSzoBnf8rJmd16Bhh2
+        0YDoTz7SEJl5698M/T8O4ag/BBgdge0+MnaNvvaWL/e2Gn7oE1aPl6FwKBgFgYI/EO9xWj
+        8Uuz5uy590RL4yFunIykbg64Bb2fdirPV9bNPMqoujuy2/wHMT7oL5TMjEd0Sya+iv1sCx
+        ER/NMjRkHUmywukvKpl1CXhxVg5xdKQzduvtIWV/f1eAwJR4Le4ZggMS/FvQze2L6c1BSi
+        OsmHNhVwpaEZRhjcEnsJAoGBAJLxBofMQX0Hig+n+9k2Al9zzg48Fl/XhfeLcHl7S+vHOD
+        Do8AUnklkVFR0Ws8XijnzuLQG5/VrNCaoWJnxMaoYDPHTqtiGXEBN3pjsPTN/GM264cAUU
+        i3j0A9vqSErnaM+48/Yx7ULo1TSvEGCCu10re6c14iAIEIHPlp+uqnx9
 peers: 
     10.1.1.2:
-        id: 12D3KooWD5qnY9wmUGJmsf4KdtaU7YraVRaQLXaY14Gjuw6DdPNQ
+        id: QmaNQUcxj1BkAGotrStLw4cLRisV5TLBjiZMWaQthzMABe

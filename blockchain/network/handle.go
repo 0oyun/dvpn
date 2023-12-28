@@ -96,6 +96,18 @@ func handleTransaction(content []byte) {
 	if len(t.Txs) == 0 {
 		return
 	}
+	for _, tx := range t.Txs {
+		if string(tx.TxType) == "addClient" {
+			fmt.Printf("received addClient transaction,")
+			a := string(tx.Data)[:strings.Index(string(tx.Data), "-,-")]
+			ipInfo := buildPeerInfoByAddr(a)
+			// peerPool[fmt.Sprint(ipInfo.ID)] = ipInfo
+			b := string(tx.Data)[strings.Index(string(tx.Data), "-,-")+3:]
+			TunPeerPool[b] = ipInfo.ID
+			fmt.Printf("client info: %s, %s\n", a, b)
+
+		}
+	}
 	mineBlock(t)
 }
 

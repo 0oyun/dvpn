@@ -60,9 +60,10 @@ func (cli Cli) userCmdHandle(data string) {
 		cli.genesis()
 	case "printAll":
 		cli.printAllBlocks()
-	case "addPeer":
-		peer := strings.TrimSpace(context[strings.Index(context, "-p")+len("-p"):])
-		cli.addPeer(peer)
+	case "addClient":
+		peer := strings.TrimSpace(context[strings.Index(context, "-p")+len("-p") : strings.Index(context, "-v")])
+		virtualAddress := strings.TrimSpace(context[strings.Index(context, "-v")+len("-v"):])
+		cli.sendTx("addClient", peer+"-,-"+virtualAddress)
 	case "sendTx":
 		txType := strings.TrimSpace(context[strings.Index(context, "-t")+len("-t") : strings.Index(context, "-d")])
 		data := strings.TrimSpace(context[strings.Index(context, "-d")+len("-d"):])

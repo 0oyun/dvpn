@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"net"
 	"sync"
 
 	"github.com/ipfs/go-datastore"
@@ -19,7 +20,21 @@ import (
 )
 
 // Protocol is a descriptor for the miniDVPN P2P Protocol.
-const Protocol = "/miniDVPN/0.0.1"
+const Protocol = "/miniDVPN/vpn/1.0.0"
+
+func GetMyIP() string {
+	var MyIP string
+
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		fmt.Printf("get my ip failed: %s\n", err)
+	} else {
+		localAddr := conn.LocalAddr().(*net.UDPAddr)
+		MyIP = localAddr.IP.String()
+	}
+	fmt.Printf("[*] your ip address: %s\n", MyIP)
+	return MyIP
+}
 
 // CreateNode creates an internal Libp2p nodes and returns it and it's DHT Discovery service.
 func CreateNode(ctx context.Context, inputKey string, port int, handler network.StreamHandler) (node host.Host, dhtOut *dht.IpfsDHT, err error) {
@@ -29,17 +44,20 @@ func CreateNode(ctx context.Context, inputKey string, port int, handler network.
 		return
 	}
 
+	ip := GetMyIP()
 	ip6quic := fmt.Sprintf("/ip6/::/udp/%d/quic", port)
 	ip4quic := fmt.Sprintf("/ip4/0.0.0.0/udp/%d/quic", port)
 
 	ip6tcp := fmt.Sprintf("/ip6/::/tcp/%d", port)
 	ip4tcp := fmt.Sprintf("/ip4/0.0.0.0/tcp/%d", port)
+	ip4tcp2 := fmt.Sprintf("/ip4/%s/tcp/%d", ip, port)
+	fmt.Printf("ip4tcp: %s\n", ip4tcp2)
 
 	// Create libp2p node
 	node, err = libp2p.New(
-		libp2p.ListenAddrStrings(ip6quic, ip4quic, ip6tcp, ip4tcp),
+		libp2p.ListenAddrStrings(ip6quic, ip4quic, ip6tcp, ip4tcp, ip4tcp2),
 		libp2p.Identity(privateKey),
-		libp2p.DefaultSecurity,
+		libp2p.NoSecurity,
 		libp2p.NATPortMap(),
 		libp2p.DefaultMuxers,
 		libp2p.Transport(libp2pquic.NewTransport),
@@ -60,6 +78,7 @@ func CreateNode(ctx context.Context, inputKey string, port int, handler network.
 	peers := []string{
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
 		"/ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
+		"/ip4/10.181.252.29/tcp/9002/p2p/QmaNQUcxj1BkAGotrStLw4cLRisV5TLBjiZMWaQthzMABe",
 		"/ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",

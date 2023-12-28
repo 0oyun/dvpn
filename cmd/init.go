@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"crypto/rand"
 	"fmt"
 	"os"
 
@@ -16,7 +17,9 @@ func InitRun() {
 
 	configFileName := *interfaceName + ".yaml"
 
-	privKey, pubKey, err := crypto.GenerateKeyPair(crypto.Ed25519, 0)
+	r := rand.Reader
+	// 为本地节点创建RSA密钥对
+	privKey, pubKey, err := crypto.GenerateKeyPairWithReader(crypto.RSA, 2048, r)
 	if err != nil {
 		panic(err)
 	}

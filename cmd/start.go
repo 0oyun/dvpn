@@ -300,7 +300,7 @@ func createDaemon(cfg *config.Config) error {
 
 	// Block until all clients are connected or for a maximum of 30s.
 	select {
-	case _, deadlineHit = <-time.After(30 * time.Second):
+	case _, deadlineHit = <-time.After(120 * time.Second):
 	case count = <-countChan:
 	}
 

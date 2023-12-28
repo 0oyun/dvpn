@@ -73,7 +73,7 @@ func StartNode(cli CLI) {
 		panic(err)
 	}
 
-	// ListenHost = GetMyIP()
+	ListenHost = GetMyIP()
 	// 创建本地节点地址信息
 	sourceMultiAddr, _ := multiaddr.NewMultiaddr(fmt.Sprintf("/ip4/%s/tcp/%s", ListenHost, ListenPort))
 	//传入地址信息，RSA密钥对信息，生成libp2p本地host信息
@@ -114,6 +114,7 @@ func StartNode(cli CLI) {
 	localHost = h
 	//写入全局变量本地P2P节点地址详细信息
 	localAddr = fmt.Sprintf("/ip4/%s/tcp/%s/p2p/%s", ListenHost, ListenPort, h.ID().String())
+
 	fmt.Printf("[*] your p2p address: %s\n", localAddr)
 	//启动监听本地端口，并且传入一个处理流的函数，当本地节点接收到流的时候回调处理流的函数
 	h.SetStreamHandler(protocol.ID(ProtocolID), handleStream)
@@ -122,8 +123,6 @@ func StartNode(cli CLI) {
 	go findP2PPeer()
 	//监测节点池,如果发现网络当中节点有变动则打印到屏幕
 	go monitorP2PNodes()
-	// //启一个go程去向其他p2p节点发送高度信息，来进行更新区块数据
-	// go sendVersionToPeers()
 	//启动程序的命令行输入环境
 	go cli.ReceiveCMD()
 
@@ -139,14 +138,6 @@ func streams() {
 		if tunDev == nil {
 			if len(TunPeerPool) != 0 {
 				if runtime.GOOS == "darwin" {
-					// Grab ip address of only peer in config
-					// var destPeer string
-					// for _, ip := range peerPool {
-					// 	// /ip4/10.181.212.66/tcp/9001 extract ip address
-					// 	ipString := ip.Addrs[0].String()
-					// 	destPeer = ipString[strings.Index(ipString, "ip4/")+len("ip4/") : strings.Index(ipString, "/tcp")]
-					// 	fmt.Printf("destPeer: %s\n", destPeer)
-					// }
 					var dstAddress string
 					for dst := range TunPeerPool {
 						dstAddress = dst
@@ -248,7 +239,7 @@ func monitorP2PNodes() {
 		if peerPoolNum != currentPeerPoolNum && peerPoolNum != 0 {
 			fmt.Printf("-------- P2P node pool has changed, current node pool has %d nodes --------\n", peerPoolNum)
 			for _, v := range peerPool {
-				fmt.Println("|   ", v.ID.String(), "   |")
+				fmt.Println("|   ", v.String(), "   |")
 			}
 			fmt.Printf("----------------------------------\n")
 			currentPeerPoolNum = peerPoolNum
