@@ -21,13 +21,15 @@ func init() {
 	listenPort := viper.GetString("network.listen_port")
 	rendezvousString := viper.GetString("network.rendezvous_string")
 	protocolID := viper.GetString("network.protocol_id")
-	virtualHost := viper.GetString("interface.address")
+	interfaceAddress := viper.GetString("interface.address")
+	interfaceName := viper.GetString("interface.name")
 	network.ListenHost = listenHost
 	network.RendezvousString = rendezvousString
 	network.ProtocolID = protocolID
 	network.ListenPort = listenPort
 	database.ListenPort = listenPort
-	network.VirtualHost = virtualHost
+	network.InterfaceAddress = interfaceAddress
+	network.InterfaceName = interfaceName
 	block.ListenPort = listenPort
 }
 

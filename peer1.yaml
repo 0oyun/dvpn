@@ -1,0 +1,11 @@
+interface:
+    name: peer1
+    id: 12D3KooWD5qnY9wmUGJmsf4KdtaU7YraVRaQLXaY14Gjuw6DdPNQ
+    listen_port: 8081
+    address: 10.1.1.2/24
+    private_key: !!binary |
+        CAESQGaq1QYD+B4pRbz2LrUWF7YIyVMYCDKMrJXSzKASdmSlMIn/7IlqsE2c1zcUQrAVUr
+        fqHgzNb9B/I3sUNiG0O/E=
+peers: 
+    10.1.1.1:
+        id: 12D3KooWNM1BJpPAuMMtwDYM1WTQzQjXzayD3ZpqqQysc4gtYb6B

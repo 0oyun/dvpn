@@ -168,6 +168,7 @@ func StartRun() {
 		// Decode the packet's destination address
 		dst := net.IPv4(packet[16], packet[17], packet[18], packet[19]).String()
 
+		fmt.Println("dst: ", dst, "plen: ", plen)
 		// Check if we already have an open connection to the destination peer.
 		stream, ok := activeStreams[dst]
 		if ok {

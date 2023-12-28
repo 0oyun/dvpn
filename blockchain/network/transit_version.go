@@ -6,9 +6,10 @@ import (
 )
 
 type version struct {
-	Version  byte
-	Height   int
-	AddrFrom string
+	Version     byte
+	Height      int
+	AddrFrom    string
+	TunAddrFrom string
 }
 
 func (v version) serialize() []byte {

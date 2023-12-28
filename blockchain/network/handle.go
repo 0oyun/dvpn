@@ -2,8 +2,10 @@ package network
 
 import (
 	"bytes"
+	"encoding/binary"
 	"fmt"
 	"io"
+	"strings"
 	"sync"
 	"time"
 
@@ -33,6 +35,50 @@ func handleStream(stream network.Stream) {
 		go handleTransaction(content)
 	case cExit:
 		go handleExit(content)
+	default:
+		fmt.Printf("received unknown CMD: %s\n", data)
+		var packet = make([]byte, 1420)
+		var packetSize = make([]byte, 2)
+		for {
+			// reading packetSize from data
+			// unshift the packetSize from data
+			packetSize, data = data[:2], data[2:]
+
+			// Decode the incoming packet's size from binary.
+			size := binary.LittleEndian.Uint16(packetSize)
+			packet, data = data[:size], data[size:]
+			if tunDev != nil {
+				tunDev.Iface.Write(packet[:size])
+			}
+		}
+	}
+}
+
+func vpnStreamHandler(stream network.Stream) {
+	var packet = make([]byte, 1420)
+	var packetSize = make([]byte, 2)
+	for {
+		// Read the incoming packet's size as a binary value.
+		_, err := stream.Read(packetSize)
+		if err != nil {
+			stream.Close()
+			return
+		}
+
+		// Decode the incoming packet's size from binary.
+		size := binary.LittleEndian.Uint16(packetSize)
+
+		// Read in the packet until completion.
+		var plen uint16 = 0
+		for plen < size {
+			tmp, err := stream.Read(packet[plen:size])
+			plen += uint16(tmp)
+			if err != nil {
+				stream.Close()
+				return
+			}
+		}
+		tunDev.Iface.Write(packet[:size])
 	}
 }
 
@@ -160,6 +206,10 @@ func handleVersion(content []byte) {
 	defer lock.Unlock()
 	v := version{}
 	v.deserialize(content)
+	dstAddr := v.TunAddrFrom[:strings.Index(v.TunAddrFrom, "/")]
+	if _, ok := TunPeerPool[dstAddr]; !ok {
+		TunPeerPool[dstAddr] = buildPeerInfoByAddr(v.AddrFrom).ID
+	}
 	bc := block.NewBlockchain()
 	fmt.Printf("received Version: %d, current Height: %d\n", v.Height, bc.GetLastBlockHeight())
 	if block.NewestBlockHeight > v.Height {
@@ -168,7 +218,7 @@ func handleVersion(content []byte) {
 			if currentHeight < block.NewestBlockHeight {
 				time.Sleep(time.Second)
 			} else {
-				newV := version{versionInfo, currentHeight, localAddr}
+				newV := version{versionInfo, currentHeight, localAddr, InterfaceAddress}
 				data := jointMessage(cVersion, newV.serialize())
 				send.SendMessage(buildPeerInfoByAddr(v.AddrFrom), data)
 				break

@@ -53,6 +53,7 @@ func (t *TUN) setDestAddress(address string) error {
 
 // Up brings up an interface to allow it to start accepting connections.
 func (t *TUN) Up() error {
+	fmt.Printf("ifconfig %s inet %s %s up\n", t.Iface.Name(), t.Src, t.Dst)
 	return ifconfig(t.Iface.Name(), "inet", t.Src, t.Dst, "up")
 }
 

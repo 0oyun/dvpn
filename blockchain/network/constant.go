@@ -5,9 +5,11 @@ import "github.com/libp2p/go-libp2p/core/host"
 var (
 	RendezvousString = "miniDVPNRendezous"
 	ProtocolID       = "/miniDVPN/1.0.0"
+	VPNID            = "/miniDVPN/vpn/1.0.0"
 	ListenHost       = "0.0.0.0"
 	ListenPort       = "4001"
-	VirtualHost      = "10.1.1.1"
+	InterfaceName    = "inf1"
+	InterfaceAddress = "10.1.1.1"
 	localHost        host.Host
 	localAddr        string
 )

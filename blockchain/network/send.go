@@ -20,9 +20,9 @@ func (s Send) SendSignOutToPeers() {
 	}
 }
 
-// 向网络中其他节点发送高度信息
+// 向网络中其他节点发送高度信息( + vpn tun信息)
 func (s Send) SendVersionToPeers(lastHeight int) {
-	newV := version{versionInfo, lastHeight, localAddr}
+	newV := version{versionInfo, lastHeight, localAddr, InterfaceAddress}
 	data := jointMessage(cVersion, newV.serialize())
 	for _, v := range peerPool {
 		s.SendMessage(v, data)
