@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	"github.com/spf13/viper"
@@ -10,8 +11,11 @@ import (
 	"github.com/toy-playground/miniDVPN/blockchain/network"
 )
 
-func init() {
-	viper.SetConfigName("config")
+func main() {
+	cFlag := flag.String("c", "config", "a configuration flag")
+	flag.Parse()
+
+	viper.SetConfigName(*cFlag)
 	viper.AddConfigPath(".")
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -31,9 +35,6 @@ func init() {
 	network.InterfaceAddress = interfaceAddress
 	network.InterfaceName = interfaceName
 	block.ListenPort = listenPort
-}
-
-func main() {
 	c := cli.New()
 	c.Run()
 }

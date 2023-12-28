@@ -170,10 +170,11 @@ func streams() {
 
 		// Decode the packet's destination address
 		dst := net.IPv4(packet[16], packet[17], packet[18], packet[19]).String()
-		fmt.Printf("dst: %s, :plen: %d\n", dst, plen)
+
 		// Check if we already have an open connection to the destination peer.
 		stream, ok := activeStreams[dst]
 		if ok {
+			fmt.Printf("dst: %s, :plen: %d\n", dst, plen)
 			// Write out the packet's length to the libp2p stream to ensure
 			// we know the full size of the packet at the other end.
 			err = binary.Write(stream, binary.LittleEndian, uint16(plen))

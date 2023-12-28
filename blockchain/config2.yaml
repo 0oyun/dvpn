@@ -1,0 +1,14 @@
+network:
+  # 本地监听地址
+  listen_host: "0.0.0.0"
+  # 本地监听端口
+  listen_port: "9002"
+  # 节点组唯一标识名称(如果节点间名称不同会找不到网络)
+  rendezvous_string: "miniDVPN-blockchain"
+  # 网络传输流的协议id(如果节点间id不同发送不了数据)
+  protocol_id: "/miniDVPN/0.0.1"
+interface:
+  # tun相关 interface name
+  name: "peer2"
+  # tun相关 本地的虚拟地址
+  address: "10.1.1.2/24"

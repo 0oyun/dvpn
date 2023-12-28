@@ -2,7 +2,7 @@ interface:
     name: peer0
     id: QmPwXkbsmDxexa1dtaWfMVDyXzmbTGGfKxPiVt7tLQf6Gx
     listen_port: 8082
-    address: 10.1.1.3/24
+    address: 10.1.1.4/24
     private_key: !!binary |
         CAASqAkwggSkAgEAAoIBAQCqCQE8rhUPtfp3ApPnVOlUYo7auDqqpF+uacNWJGz4pIrs8T
         CSQhRG5qZlKJvxWgfoUcHBBGc0c3vEzrlMSO8nkFFx9DP2WZaJxImLId+mLK+wHc8NkbkT
@@ -28,5 +28,5 @@ interface:
         Do8AUnklkVFR0Ws8XijnzuLQG5/VrNCaoWJnxMaoYDPHTqtiGXEBN3pjsPTN/GM264cAUU
         i3j0A9vqSErnaM+48/Yx7ULo1TSvEGCCu10re6c14iAIEIHPlp+uqnx9
 peers: 
-    10.1.1.2:
-        id: QmaNQUcxj1BkAGotrStLw4cLRisV5TLBjiZMWaQthzMABe
+    10.1.1.1:
+        id: QmdwJooRRt7P7A7ckGCN6sdA3EzW5avoSFzeuGLKnpovdU

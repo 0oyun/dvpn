@@ -56,6 +56,7 @@ func handleStream(stream network.Stream) {
 
 func vpnStreamHandler(stream network.Stream) {
 	var packet = make([]byte, 1420)
+	fmt.Printf("vpn stream handler : %s\n", stream.Conn().RemotePeer().String())
 	var packetSize = make([]byte, 2)
 	for {
 		// Read the incoming packet's size as a binary value.
