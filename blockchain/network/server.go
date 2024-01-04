@@ -2,7 +2,6 @@ package network
 
 import (
 	"context"
-	"crypto/rand"
 	"encoding/binary"
 	"fmt"
 	"net"
@@ -65,13 +64,19 @@ func StartNode(cli CLI) {
 	bc := block.NewBlockchain()
 	block.NewestBlockHeight = bc.GetLastBlockHeight()
 	fmt.Printf("[*] listen IP Address: %s Port: %s\n", ListenHost, ListenPort)
-	r := rand.Reader
+	// r := rand.Reader
 	// 为本地节点创建RSA密钥对
-	prvKey, _, err := crypto.GenerateKeyPairWithReader(crypto.RSA, 2048, r)
+	prvKey, err := crypto.UnmarshalPrivateKey([]byte(PrivateKey))
 	if err != nil {
 		fmt.Printf("generate keypair failed: %s\n", err)
 		panic(err)
 	}
+
+	// prvKey, _, err := crypto.GenerateKeyPairWithReader(crypto.RSA, 2048, r)
+	// if err != nil {
+	// 	fmt.Printf("generate keypair failed: %s\n", err)
+	// 	panic(err)
+	// }
 
 	ListenHost = GetMyIP()
 	// 创建本地节点地址信息

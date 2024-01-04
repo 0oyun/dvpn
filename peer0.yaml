@@ -3,6 +3,7 @@ interface:
     id: QmPwXkbsmDxexa1dtaWfMVDyXzmbTGGfKxPiVt7tLQf6Gx
     listen_port: 8082
     address: 10.1.1.4/24
+    remote_ip: 10.181.239.116
     private_key: !!binary |
         CAASqAkwggSkAgEAAoIBAQCqCQE8rhUPtfp3ApPnVOlUYo7auDqqpF+uacNWJGz4pIrs8T
         CSQhRG5qZlKJvxWgfoUcHBBGc0c3vEzrlMSO8nkFFx9DP2WZaJxImLId+mLK+wHc8NkbkT
@@ -29,4 +30,8 @@ interface:
         i3j0A9vqSErnaM+48/Yx7ULo1TSvEGCCu10re6c14iAIEIHPlp+uqnx9
 peers: 
     10.1.1.1:
-        id: QmdwJooRRt7P7A7ckGCN6sdA3EzW5avoSFzeuGLKnpovdU
+        id: Qmcvb91UBUtgFHdEQDTNVW1tT9B8ebagojJNaGnhJmW5iY
+    10.1.1.2:
+        id: QmNWYjnJqUHFMuLRH7KxZfgZBjQ5YfHBA9VHGHHaibQehp
+    10.1.1.3:
+        id: QmabJcpncmRMH8YM6AZKtx4TRa6Q1fkB1GTp1JuftiHwao

@@ -37,7 +37,7 @@ func GetMyIP() string {
 }
 
 // CreateNode creates an internal Libp2p nodes and returns it and it's DHT Discovery service.
-func CreateNode(ctx context.Context, inputKey string, port int, handler network.StreamHandler) (node host.Host, dhtOut *dht.IpfsDHT, err error) {
+func CreateNode(ctx context.Context, inputKey string, port int, handler network.StreamHandler, remoteIP string) (node host.Host, dhtOut *dht.IpfsDHT, err error) {
 	// Unmarshal Private Key
 	privateKey, err := crypto.UnmarshalPrivateKey([]byte(inputKey))
 	if err != nil {
@@ -74,16 +74,21 @@ func CreateNode(ctx context.Context, inputKey string, port int, handler network.
 	// Create DHT Subsystem
 	dhtOut = dht.NewDHTClient(ctx, node, datastore.NewMapDatastore())
 
+	tmp3 := fmt.Sprintf("/ip4/%s/tcp/9003/p2p/QmabJcpncmRMH8YM6AZKtx4TRa6Q1fkB1GTp1JuftiHwao", remoteIP)
+	tmp2 := fmt.Sprintf("/ip4/%s/tcp/9002/p2p/QmNWYjnJqUHFMuLRH7KxZfgZBjQ5YfHBA9VHGHHaibQehp", remoteIP)
+	tmp := fmt.Sprintf("/ip4/%s/tcp/9001/p2p/Qmcvb91UBUtgFHdEQDTNVW1tT9B8ebagojJNaGnhJmW5iY", remoteIP)
 	// Define Bootstrap Nodes.
 	peers := []string{
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
 		"/ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
-		"/ip4/10.181.239.116/tcp/9001/p2p/QmdwJooRRt7P7A7ckGCN6sdA3EzW5avoSFzeuGLKnpovdU",
 		"/ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
 		"/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
 	}
+	peers = append(peers, tmp)
+	peers = append(peers, tmp2)
+	peers = append(peers, tmp3)
 
 	// Convert Bootstap Nodes into usable addresses.
 	BootstrapPeers := make(map[peer.ID]*peer.AddrInfo, len(peers))

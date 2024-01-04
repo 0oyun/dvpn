@@ -12,3 +12,28 @@ interface:
   name: "peer1"
   # tun相关 本地的虚拟地址
   address: "10.1.1.1/24"
+  id: Qmcvb91UBUtgFHdEQDTNVW1tT9B8ebagojJNaGnhJmW5iY
+  private_key: !!binary |
+        CAASpwkwggSjAgEAAoIBAQDetQjEn7TUx2GADhKBlrKudxFw8cfWyc3qQvZI8oYo6V2+Pb
+        WiUJ7D66abXMoaR7KcbIQ+q/8vx2O84cT+S8t2ZZL8g6qB3yfMfyulKxwtyhlbV9gRMzQB
+        gAYbrFYTyj3C+Wq2nQoX5N0MMm9lg3ESD2ISrv/+sd54KNYyNuSByg8/p81P71iM/0whQZ
+        NmAiMWKrM2X9WxcEFimHL7bE8sqxsgOQo98p0nRhpKMImetpHs3KLNswCJUVJeYIkrqDt9
+        tSlHojAHo4TDps9Wfl8d9T2K6sevsZy6yuLV5tlFXOjUvasK3O91RsMVFy2OoPLMa7xgf6
+        eUPfkaiVNnSZbvAgMBAAECggEABGktfUd0e2pfgfvFXg+wBkiRbd08CgMBMwyUeCllgtXs
+        Z2ItgMN8AYFfUWBrGE4nOXXkwKEDctzOGuWV0zuJEhU87gdljyDuVtyF7sWFz1pbWjXJL7
+        4F36m7dTzaj5XH1169QFSn6IU944n0LtyFlsf7N0eEBnVbZKHabDAuImvmnvasGuTuQt8d
+        dsAaWSNsxZLFpaTa6v9NFN55RI1G93lL2jl1WsrSGyAht4tXAoGQVWqAhjzjXQ8jwKT1kb
+        m/w9R6r1M4/yaZULzpMNfCeqiq9NDi6lhpzgUdTegLkbEgtuJyqjcEsAgXRrW/s56sgnuM
+        N4ZRBg3AhOzc86+AYQKBgQDnlG5+UD9CFKOeokULGJuVD9uTaGfdDUU7SrvKZWowTvRBio
+        RWW7L7ND2IBr9wNTvY0xsJxFFAaKwotROOdLS3Z6qiNWz9yWlfqXQy/gPigMMAfd+EeC2U
+        jppkqR4u3Iyp0wq4D3p9naY95WHXQXbTwQR60WTjAgKalAFOnBwYtwKBgQD2MRUz3fR+pQ
+        3ngdVD0TFSQ+8IDipZtLEfTf1fA/QD5Sgw2noDHpC2eLTH+ROBLvy6FzmF9Px0ZycsEhW2
+        u9Gxh/1ovKE2gicehwWoOlAFAyIkTV7wiILRpxPUwNT/RMfh6c13YzAr0SmILxyaRZiK5Y
+        ZHqKOI75B1RSyHpNOLiQKBgQCWGWEcwgqeXB5JPcgejw6YqTSa8LsRTf6nlaLuZplTQnmS
+        2aM5DiqOI6gWOLlwkzB9Myd9Rx+a7b1YjTVlykMv9SNmC9bfD+MavAyy2G3QK8E42l070W
+        FJvrxXrj4ABbeugzmZX373WG1eBQVLrgTE74Bl0r7fXHgvlOrb9tdHNQKBgHLZMOfyWjWe
+        cB8YzVGGzHhxIphia1VP2vUcn99sa7BJffdUZGkCIEZPhx5mzreMIO/7F6WrRP5UhMylXy
+        XQ9qDYLNpobNiN3Qv7tyLkmSHNdWb0BR82v7hoNfMhRfwTrR9xv507U2SNfc9/EtvRLblW
+        G89gF3IxN/XNIFnjBaDpAoGAT+p+6Dfxt0gsBhHNldo1JrTmm8GkbUSNwjGl5AB8yrpuZ9
+        +mxKZ4uU55gVhocF26Z9p4JPDyl88AQanHx84Ulkoz2giEaReU6NgYW59qX28LfK2s/1Fb
+        XmVYuFFjs9x9XuHp3FCkJQlcJlRCify9QOr06R/BpLOFNkP9Et6oo3g=

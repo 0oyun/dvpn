@@ -27,6 +27,8 @@ func main() {
 	protocolID := viper.GetString("network.protocol_id")
 	interfaceAddress := viper.GetString("interface.address")
 	interfaceName := viper.GetString("interface.name")
+	privKey := viper.GetString("interface.private_key")
+	network.PrivateKey = privKey
 	network.ListenHost = listenHost
 	network.RendezvousString = rendezvousString
 	network.ProtocolID = protocolID

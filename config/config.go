@@ -16,11 +16,12 @@ type Config struct {
 }
 
 type Interface struct {
-	Name       string `yaml:"name"`
-	ID         string `yaml:"id"`
-	ListenPort int    `yaml:"listen_port"`
-	Address    string `yaml:"address"`
-	PrivateKey string `yaml:"private_key"`
+	Name          string `yaml:"name"`
+	ID            string `yaml:"id"`
+	ListenPort    int    `yaml:"listen_port"`
+	Address       string `yaml:"address"`
+	PrivateKey    string `yaml:"private_key"`
+	RemoteAddress string `yaml:"remote_ip"`
 }
 
 type Peer struct {
@@ -34,11 +35,12 @@ func Read(filename string) (*Config, error) {
 	}
 	result := Config{
 		Interface: Interface{
-			Name:       "peer0",
-			ID:         "",
-			ListenPort: 8080,
-			Address:    "10.1.1.1/24",
-			PrivateKey: "",
+			Name:          "peer0",
+			ID:            "",
+			ListenPort:    8080,
+			Address:       "10.1.1.1/24",
+			PrivateKey:    "",
+			RemoteAddress: "",
 		},
 	}
 

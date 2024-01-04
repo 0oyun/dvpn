@@ -12,6 +12,7 @@ var (
 	InterfaceAddress = "10.1.1.1"
 	localHost        host.Host
 	localAddr        string
+	PrivateKey       string
 )
 
 const versionInfo = byte(0x00)

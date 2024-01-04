@@ -66,7 +66,7 @@ func StartRun() {
 	// 用linux做测试
 	if runtime.GOOS == "darwin" {
 		if len(cfg.Peers) > 1 {
-			panic("darwin only supports one peer")
+			fmt.Printf("darwin only supports one peer")
 		}
 
 		// Grab ip address of only peer in config
@@ -111,6 +111,7 @@ func StartRun() {
 		cfg.Interface.PrivateKey,
 		port,
 		streamHandler,
+		cfg.Interface.RemoteAddress,
 	)
 	if err != nil {
 		panic(err)
